@@ -22,12 +22,16 @@ import { TickerService } from './services/ticker.service';
 import { PrivateSectionService } from './services/private-section.service';
 
 import { Routes } from '@angular/router';
+import { YoutubeSectionComponent } from './private-section-list/youtube-section/youtube-section.component';
+import { SigleSectionComponent } from './private-section-list/sigle-section/sigle-section.component;
 
 
 const appRoutes: Routes =[
   { path: 'auth/signup', component: SignupComponent },
   { path: 'auth/signin', component : SigninComponent },
   { path: 'sections-list',canActivate:[AuthGuardService] ,component : BodyListComponent },
+  { path: 'sections-list/:id',canActivate:[AuthGuardService] ,component : SigleSectionComponent },
+  
   { path:'' , redirectTo: 'sections-list', pathMatch: 'full'},
   { path:'**', redirectTo:'sections-list'}
 
@@ -40,7 +44,9 @@ const appRoutes: Routes =[
     SignupComponent,
     SigninComponent,
     BodyListComponent,
-    NavListComponent
+    NavListComponent,
+    YoutubeSectionComponent,
+    SigleSectionComponent
   ],
   imports: [
     BrowserModule,
