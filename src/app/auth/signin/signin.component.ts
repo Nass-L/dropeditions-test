@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router} from '@angular/router';
-
+import{ TickerService } from '../../services/ticker.service';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -15,7 +15,8 @@ export class SigninComponent implements OnInit {
   exp="/[0-9a-zA-Z]{6,}/";
   constructor(private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private tickeService: TickerService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -33,7 +34,7 @@ export class SigninComponent implements OnInit {
     const password = this.signinForm.get('password').value;
     this.authService.signInUser(email,password).then(
       () => {
-        this.router.navigate(['/books']);
+        this.router.navigate(['/sections-list']);
       },
       (error) => {
         this.errorMessage=error;
@@ -41,4 +42,7 @@ export class SigninComponent implements OnInit {
     );
   }
 
+  onFetch(){
+    this.tickeService.getTickersFromServer();
+  }
 }

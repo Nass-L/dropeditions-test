@@ -18,7 +18,8 @@
                       class="form-control"
                       formControlName="password" >
            </div>
-           <button class="btn btn-primary"
+           <button class="btn btn-primary" (click)="onFetch()"> fetch</button>
+                   <button class="btn btn-primary"
                    type="submit"
                    [disabled]="signinForm.invalid"> Se connecter</button>
        </form>

@@ -1,1 +1,38 @@
-<p>body-list works!</p>
+<div class="row">
+    <div class="col-xs-12">
+        
+        <div class="list-group">
+            <button
+                    class="list-group-item"
+                    *ngFor="let ticker of tickersList; let i=index"
+                    >
+                    <h3 class="list-group-item-heading">
+                       {{ ticker.pagination.limit }}
+                    </h3>
+                    <h3 class="list-group-item-heading">
+                        {{ ticker.pagination.offset }}
+                     </h3>
+                     <h3 class="list-group-item-heading">
+                        {{ ticker.pagination.count }}
+                     </h3>
+                     <h3 class="list-group-item-heading">
+                        {{ ticker.pagination.total }}
+                     </h3>
+                     
+                     <h3 class="list-group" *ngFor="let dat in ticker; let n=index">
+                        
+                           Cc  :{{dat.name}}
+
+                         </h3>
+
+                     
+              
+                   
+
+            </button>
+        </div>
+        
+
+    </div>
+
+</div>

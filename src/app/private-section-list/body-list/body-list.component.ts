@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TickerService } from '../../services/ticker.service';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-body-list',
@@ -6,10 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./body-list.component.css']
 })
 export class BodyListComponent implements OnInit {
+ 
+  tickersList : any = [];
+  tickerSubscription: Subscription;
 
-  constructor() { }
+
+  constructor(private tickerService: TickerService) {
+
+   }
 
   ngOnInit(): void {
+    //subscribe to object observale
+    this.tickerSubscription = this.tickerService.tickersSubject.subscribe(
+      (tickers: any[]) => {
+        this.tickersList= tickers;
+      }
+    );
+    this.tickerService.emitTickerSubject();
+
   }
+  
 
 }
