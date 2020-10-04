@@ -88,6 +88,7 @@
               "src/assets"
             ],
             "styles": [
+              "../dropedetions-test/node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "dropedetions-test"
+    }
+  },
+  "defaultProject": "dropedetions-test",
+  "cli": {
+    "analytics": false
+  }
 }
